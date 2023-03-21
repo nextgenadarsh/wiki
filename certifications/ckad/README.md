@@ -1,2 +1,2 @@
-# Certified Kubernetes Application Developer (CKAD)
+# Certified Kubernetes Application Developer
 
