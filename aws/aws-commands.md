@@ -20,8 +20,8 @@
 | `aws configure get region --profile <profile>`    | get region for profile
 | `aws configure list`  | get current profile credentials
 | `aws configure list-profiles` | get all profiles
-| `$env:AWS_PROFILE='<profile>'`    | set currrent profile
-| `$env:AWS_PROFILE`    | get current profile
+| `export AWS_PROFILE='<profile>'`    | set currrent profile
+| `echo $AWS_PROFILE`           | get current profile
 
 ## Identity / Login
 
@@ -43,12 +43,6 @@
 | Command                       | Purpose
 | --                            | --
 | `aws s3 ls`   | list S3 buckets
-
-## Redis Cache
-
-| Command                       | Purpose
-| --                            | --
-| `redis-cli -h <host> -c -p <port> --tls`  | connect to redis
 
 
 
