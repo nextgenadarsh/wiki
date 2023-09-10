@@ -1,4 +1,0 @@
-# AppSync
-
-`#serverless`
-

@@ -1,3 +1,0 @@
-# Step Functions
-
-`#serverless`

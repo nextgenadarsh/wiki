@@ -1,4 +1,0 @@
-# Serverless Application Model
-
-`#serverless`
-
