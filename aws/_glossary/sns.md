@@ -1,4 +1,0 @@
-# SNS
-
-`#serverless`
-
