@@ -75,7 +75,7 @@ For a VPC’s starting CIDR address, choosing 192.168.0.0 with a /16 network mas
 
 # The Default VPC
 
-- A default VPC is created in each AWS region, with each availability zone containing a public subnet. The default VPC is available within each AWS region and is created with the IPv4 CIDR block `172.30.0.0/16`, which provides `up to 65,531 private IPv4 addresses`.
+- A default VPC is created in each AWS region, with each AZ containing a public subnet. The default VPC is available within each AWS region and is created with the IPv4 CIDR block `172.30.0.0/16`, which provides `up to 65,531 private IPv4 addresses`.
 - An Internet gateway `(IG) is created and attached to the default VPC` with a route table entry that sends all IP traffic intended for the Internet to the attached Internet gateway.
 - A `default security group and default network ACL` are also associated with the default VPC.
 - An EC2 instance placed on the default public subnet within the default VPC receives both a public and a private IPv4 address and public and private DNS host names.

@@ -6,9 +6,9 @@ Amazon Storage Gateway
 The Storage Gateway appliance is available in three different deployments:
 
 - File Gateway
-  - enables users to store files in Amazon S3, with local caching for low-latency access.
+  - enables users to store files in Amazon `S3`, with `local caching for low-latency` access.
 - Volume Gateway
-  - provides block-level storage volumes that can be used as iSCSI targets, with local caching for low-latency access.
+  - provides `block-level storage` volumes that can be used as iSCSI targets, with `local caching` for low-latency access.
 - Tape Gateway
   - emulates a tape library providing virtual tape infrastructure (VTI) that can be used with existing backup applications.
 

@@ -53,7 +53,7 @@ Analytics | Business intelligence (BI), batch reporting, data visualizations  | 
 - Deploying AWS Lake Formation, data can be connected from external data silos into a data lake for analytics and machine learning analysis.
 
 - AWS Lake Formation `automates the creation of a secure centralized data lake` that stores all customer data in its original format and is prepared for analysis.
-- AWS Lake Formation uses Amazon S3 storage to create the data lake, ensuring unlimited storage and durable storage across multiple availability zones.
+- AWS Lake Formation uses Amazon S3 storage to create the data lake, ensuring unlimited storage and durable storage across multiple AZs.
 - AWS Lake Formation does the work of loading selected data from source locations, turning on encryption and key management, and reorganizing data into a columnar format for analysis by various analytical tools.
 
 ![AWS Lake Formation](../../images/lake-formation.png)

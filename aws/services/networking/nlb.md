@@ -42,11 +42,11 @@ Network Load Balancer (NLB)
 
 # Multi-Region Failover
 
-- An NLB supports failover across AWS regions using Amazon Route 53 health checks, allowing organizations to create a highly available, globally distributed load balancing solution that can route traffic to the optimal region based on the health of the targets in each region.
+- An NLB supports failover across AWS regions using Route 53 health checks, allowing organizations to create a highly available, globally distributed load balancing solution that can route traffic to the optimal region based on the health of the targets in each region.
 
 - An NLB must be created in each AWS region where traffic will be load balanced. Then create a target group in each region that contains the regional targets to which to route traffic. Enable cross-zone load balancing for each NLB so traffic is distributed across the targets in each AZ.
 
-- Next, create an Amazon Route 53 health check for each target group. You can use the default health check configuration or customize the health check settings to meet your specific requirements.
+- Next, create an Route 53 health check for each target group. You can use the default health check configuration or customize the health check settings to meet your specific requirements.
 
 - Finally, create a Route 53 record set that points to the NLB in each AWS region. Choices are a weighted record set, or a latency-based record set to specify the routing policy for the record set. With a weighted record set the proportion of traffic that should be routed to each region is controlled based on the weights assigned to the record set. With a latency-based record set, Route 53 routes traffic to the region that provides the lowest latency for the end user.
 

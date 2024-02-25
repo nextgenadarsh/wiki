@@ -175,12 +175,12 @@ Reserved instances (RI) are a cost-saving offering that enables you to reserve c
 
 Once a Reserved instance is ordered, you will be charged the discounted hourly rate, which can be significantly lower than the on-demand rate. With Reserved instances, you pay for the entire term regardless of actual usage. You will be billed for the reserved term whether you run an instance that matches your reservation or not.
 
-For EC2 instances or specific compute-related AWS services that are constantly in use, Reserved instance pricing will save a great deal of money. Organizations need to consider several variables when ordering Reserved instance pricing; for example, the AWS region they are operating in and the specific availability zone location. Note that a c5a.8xlarge EC2 instance is not available in each AZ in the Northern Virginia region, which has six AZs (see Figure 13-6). Reserved instance pricing can be ordered for standard 1-year or 3-year durations. A Reserved instance reservation provides a billing discount that applies to EC2 instances hosted in a specific AZ or region. The billing discount could be as high as 72% compared to the standard on-demand hourly rate. Each RI is defined by the following attributes:
+For EC2 instances or specific compute-related AWS services that are constantly in use, Reserved instance pricing will save a great deal of money. Organizations need to consider several variables when ordering Reserved instance pricing; for example, the AWS region they are operating in and the specific AZ location. Note that a c5a.8xlarge EC2 instance is not available in each AZ in the Northern Virginia region, which has six AZs (see Figure 13-6). Reserved instance pricing can be ordered for standard 1-year or 3-year durations. A Reserved instance reservation provides a billing discount that applies to EC2 instances hosted in a specific AZ or region. The billing discount could be as high as 72% compared to the standard on-demand hourly rate. Each RI is defined by the following attributes:
 
 Instance type: The instance family and the size of the instance
-Scope: The AWS region or availability zone location of the Reserved instance
+Scope: The AWS region or AZ location of the Reserved instance
 Regional: The AWS region location of the Reserved instance
-Zonal: The AWS availability zone location of the Reserved instance
+Zonal: The AWS AZ location of the Reserved instance
 Tenancy: Shared default hardware or single-tenant, dedicated hardware
 Platform: Windows or Linux
 
@@ -259,7 +259,7 @@ Savings Plans are a cost savings option that provides discounts on Amazon EC2, A
 Three types of Savings Plans are available:
 
 - Compute: Compute Savings Plans provide discounts on EC2 instance usage across all instance families, sizes, and regions, and on Fargate usage for all regions and AWS compute platforms.
-- EC2 Instance: EC2 Instance Savings Plans provides savings up to 72% in exchange for a 1- to 3-year commitment to usage of EC2 instance families in a specific AWS region, regardless of availability zone, EC2 instance size, operating system, or tenancy. Customers can change instance sizes if staying within the selected EC2 instance family. EC2 instance usage will be automatically charged at the discounted price; compute usage beyond the per hour commitment will be charged at the current on-demand instance rate. Payment options are all upfront (which provides the best price break), partial upfront, and no upfront. A savings plan also works with AWS Organizations; benefits are applicable to all AWS accounts within an AWS organization.
+- EC2 Instance: EC2 Instance Savings Plans provides savings up to 72% in exchange for a 1- to 3-year commitment to usage of EC2 instance families in a specific AWS region, regardless of AZ, EC2 instance size, operating system, or tenancy. Customers can change instance sizes if staying within the selected EC2 instance family. EC2 instance usage will be automatically charged at the discounted price; compute usage beyond the per hour commitment will be charged at the current on-demand instance rate. Payment options are all upfront (which provides the best price break), partial upfront, and no upfront. A savings plan also works with AWS Organizations; benefits are applicable to all AWS accounts within an AWS organization.
 
 - SageMaker: SageMaker Savings Plans helps you reduce SageMaker costs by up to 64% regardless of instance family, size, or AWS region.
 Note
@@ -296,7 +296,7 @@ The number of spot instances that you can request depends on your defined accoun
 
 To optimize the costs of using spot instances, you can deploy several allocation strategies:
 
-Lowest price: This strategy involves deploying the least expensive combination of instance types and availability zones based on the current spot price. This is the default Spot Fleet optimization strategy.
+Lowest price: This strategy involves deploying the least expensive combination of instance types and AZs based on the current spot price. This is the default Spot Fleet optimization strategy.
 Diversified: This strategy involves distributing spot instances across all available spot pools.
 Capacity optimized: This strategy involves provisioning from the most available spot instance pools.
 Capacity rebalancing: This strategy involves allowing the Spot Fleet service to replace spot instances that are at risk of interruption with new spot instances.
@@ -372,7 +372,7 @@ Performance | Better  | Faster  | Fast  | Fastest
 
 Customers that still remain cautious about moving to the cloud due to latency concerns or compliance regulations may find that AWS Local Zones, AWS Wavelength Zones, or AWS Outposts matches their requirements:
 
-- AWS Local Zones: AWS infrastructure including compute, storage, and database services closer to customers in a single data center that can be linked to an existing VPC within an AWS region. Currently, EC2, VPC, EBS, Amazon FSx, Elastic Load Balancing, Amazon EMR, and RDS services can be deployed in a Local Zone, allowing local applications running in on-premises data centers to have high-speed connections into the AWS cloud.
+- AWS Local Zones: AWS infrastructure including compute, storage, and database services closer to customers in a single data center that can be linked to an existing VPC within an AWS region. Currently, EC2, VPC, EBS, Amazon FSx, ELB, Amazon EMR, and RDS services can be deployed in a Local Zone, allowing local applications running in on-premises data centers to have high-speed connections into the AWS cloud.
 
 - AWS Wavelength Zones: AWS compute and storage services infrastructure deployed into third-party telecommunication providers’ data centers located at the edge of the 5G network (see Figure 13-11). Applications deployed in a Wavelength Zone data center can locally connect to application servers without leaving the Wavelength Zone. Use cases include gaming, live video streaming, and machine learning.
 
@@ -395,7 +395,7 @@ Depending on the workload being deployed, both vertical or horizontal scaling an
 Every EC2 instance can be vertically scaled to a larger size EC2 instance, improving the available RAM, storage size and IOPS, and network speeds.
 Auto Scaling groups provide automatic scaling of EC2 instances and containers, minimizing costs while providing the desired performance.
 Spot instances can be set to hibernate when the EC2 service takes back a spot instance.
-Amazon Aurora Serverless deployments can scale up and down and also hibernate after a defined period of inactivity.
+Aurora Serverless deployments can scale up and down and also hibernate after a defined period of inactivity.
 
  
 . | Vertical Scaling  | Hibernation | Auto Scaling  | EC2 Auto Scaling
@@ -403,7 +403,7 @@ Amazon Aurora Serverless deployments can scale up and down and also hibernate af
 EC2 Instances | Yes | No
 Containers  | No  | No  |   | Yes
 Spot Instances  | No  | Yes | | Yes
-Amazon Aurora Serverless v1/v2  | | Yes | Yes | Yes
+Aurora Serverless v1/v2  | | Yes | Yes | Yes
 
 Note
 

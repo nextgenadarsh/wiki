@@ -27,7 +27,7 @@ Detective controls at AWS include the following security services:
 - AWS CloudWatch
   - Monitors AWS cloud services such as Amazon RDS databases, EC2 instances, and DynamoDB tables and hosted applications by collecting and tracking metric data, application and operating system log files, and using automated responses to defined alarms.
 - Amazon GuardDuty
-  - Provides continuous threat detection and analysis of VPC Flow Logs, Amazon Route 53 DNS query logs, and AWS CloudTrail S3 data event logs, and protecting AWS accounts and data stored in Amazon S3 from malicious activity. AWS GuardDuty malware protection can help detect malicious files stored on EBS volumes, protecting attached EC2 instances and Amazon Elastic Kubernetes Service (EKS) clusters.
+  - Provides continuous threat detection and analysis of VPC Flow Logs, Route 53 DNS query logs, and AWS CloudTrail S3 data event logs, and protecting AWS accounts and data stored in Amazon S3 from malicious activity. AWS GuardDuty malware protection can help detect malicious files stored on EBS volumes, protecting attached EC2 instances and Amazon Elastic Kubernetes Service (EKS) clusters.
 - AWS Config
   - Detects configuration changes in RDS AWS infrastructure including Amazon RDS, EC2 instances, VPC and database architecture, including security groups, database instances, snapshots, and subnet groups.
 - Amazon Macie
@@ -47,7 +47,7 @@ Detective controls at AWS include the following security services:
   - AWS Global Accelerator
   - AWS Identity and Access Management (IAM)
   - AWS Organizations
-  - Amazon Route 53
+  - Route 53
   - AWS Shield Advanced
   - AWS WAF Classic
 - HTTP endpoints for domains and hosted workloads hosted at AWS can be be blocked with Security Groups and Network ACLs and can automatically be redirected to HTTPS endpoints when using Amazon CloudFront or an Amazon ELB.

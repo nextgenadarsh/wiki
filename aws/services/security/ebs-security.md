@@ -3,7 +3,7 @@ Amazon EBS
 
 - Provide `persistent block-level storage volumes for EC2 instances`.
 - Used to store a wide variety of data, including operating system files, application data, and database records.
-- Automatically `replicated within their availability zone` to protect against data loss due to failure, and support a range of performance levels and storage options to meet the needs of different workloads.
+- Automatically `replicated within their AZ` to protect against data loss due to failure, and support a range of performance levels and storage options to meet the needs of different workloads.
 - Provides the `option to encrypt EBS volumes` to protect the data records.
 
 # Amazon EBS Security

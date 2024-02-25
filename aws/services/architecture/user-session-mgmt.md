@@ -12,7 +12,7 @@ User Session Management
 
 - Another way to address `shared data storage for user sessions is to use an in-memory key-value store` hosted by Amazon `ElastiCache` caching the user session state.
 - For a `simple deployment with no redundancy`, you could choose to employ ElastiCache for Memcached, but this solution provides no replication of the in-memory nodes.
-- For a `redundant distributed session` solution, you could deploy ElastiCache for Redis, which `supports replicating` user session information between `multiple nodes across multiple availability zones` (AZs), adding redundancy and durability to the cached user session information.
+- For a `redundant distributed session` solution, you could deploy ElastiCache for Redis, which `supports replicating` user session information between `multiple nodes across multiple AZs` (AZs), adding redundancy and durability to the cached user session information.
 
 ![An ElastiCache for Redis Distributed User Session Cache](../../images/elasti-cache-redis-distributed.png)
 > Fig: An ElastiCache for Redis Distributed User Session Cache

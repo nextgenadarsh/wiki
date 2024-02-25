@@ -22,7 +22,7 @@ Amazon Elastic Block Store (EBS)
 - When baseline values for capacity or performance have been breached, Amazon CloudWatch alarms can alert the Simple Notification Service (SNS).
 - SNS, in turn, can notify Amazon Lambda, which can execute a custom function to increase capacity and performance or carry out any specific task as required.
 - When an EBS volume is created, the blocks for the volume are `spread across multiple storage arrays`, providing a high level of redundancy and durability.
-- EBS volumes are `stored within the same availability zone` (AZ) `where your instances reside` providing 99.8% to 99.999% durability, depending on the type of EBS volume created.
+- EBS volumes are `stored within the same AZ` (AZ) `where your instances reside` providing 99.8% to 99.999% durability, depending on the type of EBS volume created.
 
 Performance Specifications for EBS Volume Types
 ---

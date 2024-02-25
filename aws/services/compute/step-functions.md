@@ -42,7 +42,7 @@ The following workflows are possible to design with AWS Step Functions:
 - Examples of service tasks include the following:
   - Running an Amazon ECS or Fargate task hosted in a VPC
   - Submitting an AWS Batch job and waiting for completion
-  - Retrieving or placing a new item into an Amazon DynamoDB table
+  - Retrieving or placing a new item into an DynamoDB table
 
 # Types of Workflows
 

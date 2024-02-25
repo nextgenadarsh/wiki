@@ -11,7 +11,7 @@ S3 Glacier Deep Archive
 
 <h2 style="background-color:lightgreen">Amazon S3 Glacier Cheat Sheet</h2>
 
-- Data in Amazon S3 Glacier is resilient even if one availability zone is unavailable.
+- Data in Amazon S3 Glacier is resilient even if one AZ is unavailable.
 - Archived objects are visible upon retrieval request through an Amazon S3 temporary storage location and not directly through Amazon S3 Glacier.
 - Amazon S3 Glacier automatically encrypts all stored data at rest using AES 256-bit encryption.
 - The Amazon S3 PUT API allows direct uploads to Amazon S3 Glacier.

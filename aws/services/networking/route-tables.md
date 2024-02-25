@@ -10,7 +10,7 @@ Route Tables
 
 - Each VPC has a default route table called the main route table. 
 - Associated with a VPC after it is first created.
-- Provides local routing services throughout each VPC and across all defined availability zones (AZs)
+- Provides local routing services throughout each VPC and across all defined AZs (AZs)
 - Defines the routing for all subnets that are not explicitly associated with any other custom route table.
 - Cannot be deleted; however a custom route table can be associated with a subnet, replacing main route table association.
 

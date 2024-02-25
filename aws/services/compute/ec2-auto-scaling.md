@@ -130,7 +130,7 @@ EC2 Auto Scaling
 # Termination Policy
 
 - When a scale-in event occurs, defined default termination policies `control which EC2 instances are first terminated`.
-- The default termination policy is designed to ensure that your instances are evenly spaced across the availability zones to maintain high availability.
+- The default termination policy is designed to ensure that your instances are evenly spaced across the AZs to maintain high availability.
 - Termination of unhealthy instances occurs first; then Auto Scaling attempts to launch new instances to replace the terminated instances.
 - Other termination options that can be chosen for a custom termination policy include the following:
   - Oldest launch template

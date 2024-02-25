@@ -25,7 +25,7 @@ AWS Trusted Advisor
   - Warns if any Elastic IP addresses assigned to your account have not been associated. (Charges apply if Elastic IP addresses in your account are not used.)
 - Amazon RDS instances
   - Checks for idle AWS RDS database instances.
-- Amazon Route 53 records
+- Route 53 records
   - Checks whether the creation of latency record sets has been properly designed to replicate end-user requests to the best AWS region.
 - Reserved reservation expiration check
   - Warns you if your current reserved reservation is scheduled to expire within the next month. (Reserved reservations do not automatically renew.)

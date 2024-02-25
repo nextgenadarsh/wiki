@@ -63,7 +63,7 @@ responses by allowing Amazon SQS to `wait until messages are available in the qu
 
 # SQS can be used with following services:
 
-- [Amazon DynamoDB](../storage/dynamo-db.md)
+- [DynamoDB](../storage/dynamo-db.md)
   - You can use SQS to transfer messages to DynamoDB by using a Lambda function.
 - EC2 instances
   - You can scale an Auto Scaling group out or in when messages in the SQS queue increase.

@@ -1,4 +1,4 @@
-Amazon Route 53
+Route 53
 ---
 
 - DNS services for resolving queries to Amazon CloudFront and AWS Global Accelerator deployments.

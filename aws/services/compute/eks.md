@@ -22,7 +22,7 @@ Amazon Elastic Kubernetes Service (EKS)
 
 ## etcd instances
 
-- `3 etcd instances` are hosted across `3 availability zones` within each AWS region.
+- `3 etcd instances` are hosted across `3 AZs` within each AWS region.
 - `communicate with each other` to form a `distributed system` that can be used to `store and retrieve configuration data`.
 - Amazon EKS is integrated with AWS services such as Amazon CloudWatch, EC2 Auto Scaling groups, IAM, and ELB Application Load Balancers.
 

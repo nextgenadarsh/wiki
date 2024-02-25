@@ -6,7 +6,7 @@ Amazon ElastiCache
 # Amazon ElastiCache for Memcached
 
 - is a `Memcached-compatible in-memory key-value store` service that can be used as either a cache or a data store:
-  - As a `cache`, ElastiCache for Memcached helps increase throughput and decrease access latency from RDS deployments or NoSQL databases such as Amazon DynamoDB.
+  - As a `cache`, ElastiCache for Memcached helps increase throughput and decrease access latency from RDS deployments or NoSQL databases such as DynamoDB.
   - As a `session store`, ElastiCache for Memcached can be deployed using the Memcached hash table, which can be distributed across multiple nodes.
 - Use cases:
   - Application caching for database performance as an in-memory cache and session stores.
@@ -33,7 +33,7 @@ Amazon ElastiCache
 - Each node represents a partition of data.
 - ElastiCache for Memcached cannot be used as a data store.
 - ElastiCache for Memcached scales out and in through the addition and removal of nodes.
-- ElastiCache for Memcached can be deployed as a read replica for RDS and Amazon DynamoDB databases.
+- ElastiCache for Memcached can be deployed as a read replica for RDS and DynamoDB databases.
 - ElastiCache for Memcached is useful for storing users’ session state.
 - ElastiCache for Memcached does not support multi-region failover or replication.
 - Local Zones are supported for ElastiCache clusters.

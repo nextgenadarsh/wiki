@@ -1,4 +1,4 @@
-Elastic Load Balancing Service (ELB)
+ELB Service (ELB)
 ---
 
 - is a load balancing service that distributes incoming application traffic across Amazon EC2 instances, Amazon ECS containers, AWS Lambda functions, and IP addresses.
@@ -45,7 +45,7 @@ Elastic Load Balancing Service (ELB)
 
 ## Cross-zone load balancing
 
-- The nodes for the load balancers distribute incoming traffic requests evenly across the registered targets in the enabled availability zones.
+- The nodes for the load balancers distribute incoming traffic requests evenly across the registered targets in the enabled AZs.
 - If cross-zone load balancing is disabled, each load balancer node distributes traffic across the registered targets in its assigned AZ.
 - `can be disabled at the target group level`; it is `enabled by default for ALBs` and `disabled by default for NLBs`.
 
@@ -68,7 +68,7 @@ Elastic Load Balancing Service (ELB)
 ![Initial Configuration of ALB](../../images/alb-configuration.png)
 > Fig: Initial Configuration of ALB
 
-- Select the VPC, availability zone(s), and the subnets the Application Load Balancer will be linked to.
+- Select the VPC, AZ(s), and the subnets the Application Load Balancer will be linked to.
 - The ALB is always hosted in public subnets for Internet-facing applications. Public-facing load balancer deployments also require that an Internet gateway be attached to the VPC where the load balancer is being installed.
 - When you enable an AZ for an ALB, the ELB service creates an ALB node in each AZ.
 - For ALB deployments, at least two AZs are required, ensuring that if one AZ becomes unavailable or has no healthy targets, the ALB will route traffic to the healthy targets hosted in another AZ.
@@ -84,7 +84,7 @@ Elastic Load Balancing Service (ELB)
 
 - After an initial listener has been configured and the ALB has been launched successfully, additional listeners can be added by editing the ALB properties. ALB HTTPS listeners use a feature called SSL offload, which supports encrypted traffic between the client and the load balancer and decrypts traffic sent from the load balancer to registered targets. To ensure that registered targets decrypt HTTPS traffic instead of the ALB, create a Network Load Balancer with a TCP listener on port 443. With a TCP listener, the load balancer passes encrypted traffic directly to the targets without decrypting it first.
 
-- Elastic Load Balancing uses security policy to negotiate SSL connections between a client and the load balancer. For HTTPS listeners listening on port 443, an X.509 certificate must also be associated with the secure listener. Use AWS Certificate Manager (ACM) to first upload your organization’s SSL/TLS website or domain certificate; then select the certificate and select a security policy that is applied to all frontend connections. Uploading a custom security policy to secure the backend communications is not allowed. Each request accepted by the listener uses two connections:
+- ELB uses security policy to negotiate SSL connections between a client and the load balancer. For HTTPS listeners listening on port 443, an X.509 certificate must also be associated with the secure listener. Use AWS Certificate Manager (ACM) to first upload your organization’s SSL/TLS website or domain certificate; then select the certificate and select a security policy that is applied to all frontend connections. Uploading a custom security policy to secure the backend communications is not allowed. Each request accepted by the listener uses two connections:
 
   - A frontend connection between the client and the load balancer: Organizations choose the security policy for frontend connections. During the connection negotiation between the client and the ALB, a set of ciphers and protocols is presented by the client and ALB and a cipher is selected for the secure connection.
 
@@ -201,7 +201,7 @@ Log files are published every 5 minutes. Log details include the type of request
 - ALB supports AWS Outposts.
 - AWS Certificate Manager or AWS IAM can be used to manage server certificates.
 
-# Elastic Load Balancing Deployments
+# ELB Deployments
 
 ELB charges are for each hour or partial hour that an ELB load balancer (NLB, ALB, or GWLB) is running, including the number of Load Balancer Capacity Units (LCUs) used per hour by each deployed load balancer. Each LCU offers
 

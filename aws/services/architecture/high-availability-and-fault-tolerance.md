@@ -1,15 +1,8 @@
 High Availability in the Cloud
 ---
 
-Availability (%) | Potential Unavailability per Year | Use Case
--- | -- | --
-99%     | 3 days, 15 hours    | Batch processing, data transfer
-99.9%   | 8 hours, 45 minutes | Project management
-99.95%  | 4 hours, 22 minutes | Point of sale (POS), online retail
-99.99%  | 52 minutes          | Video delivery
-99.999% | 5 minutes           | ATM transactions
-
 > Availability = Uptime / (Uptime + Downtime)
+
 > Availability with Dependency = A1 * A2 * ... * An
 > Availability with Redundancy = 
 
@@ -34,8 +27,8 @@ Availability (%)  | Potential Unavailability per Year | Use Case
 ## Region
 
 - is located in a specific geographic area of the world.
-- has, at a `minimum, two availability zones`.
-- Additional data centers within each AWS region and availability zone locations host various AWS-managed cloud services for storage, databases, and managed services used by workloads.
+- has, at a `minimum, two AZs`.
+- Additional data centers within each AWS region and AZ locations host various AWS-managed cloud services for storage, databases, and managed services used by workloads.
 - is completely isolated from other regions.
 
 ### Choosing an AWS Region
@@ -54,7 +47,7 @@ Availability (%)  | Potential Unavailability per Year | Use Case
 - physical locations within a region where data centers are located. 
 - has a minimum of one data center for hosting `customer workloads`.
 - Each AZ is `linked` to the other AZs in the same region through `private dedicated, redundant, low-latency fiber network connections` that Amazon owns.
-- Design with multiple availability zones to provide `high availability, fault tolerance, and reliability`.
+- Design with multiple AZs to provide `high availability, fault tolerance, and reliability`.
 - are spaced apart by a minimum of 10–15 miles and are powered by different electrical grids and external support services such as ISPs and third-party services.
 - Primary reasons for using AZs in your infrastructure design are high availability with automatic workload failover and primary/standby/read replica database replication.
 
@@ -65,7 +58,7 @@ Availability (%)  | Potential Unavailability per Year | Use Case
 
 ## Wavelength Zones
 
-- Compute and storage services in the telecommunications provider’s data center.
+> Compute and storage services in the telecommunications provider’s data center.
 
 AWS Service     | What is it?   | FT and HA Use Case  | Deployment  | Considerations  | Use Case
 --  | --  | -- | --  | --  | --
@@ -73,7 +66,7 @@ Amazon EC2 | Virtual servers  | Multiple AZs with ELB, EC2 Auto Scale | Requires
 Amazon ECS  | Docker containers | A cluster of EC2 instances across AZs | Task Statement  | AWS Fargate management  | Hybrid environment, batch processing, microservices
 Amazon EBS  | Virtual hard drives | Multiple copies | Attach to EC2 instances | SSD, IOPS, Throughput optimized, EBS Block Express, Lifecycle Manager (Snapshots) | Boot and data drives, Multi-attach
 EC2 Auto Scaling  | Scale compute automatically | Across multiple AZs with ELB  | Scheduled, step, simple, target tracking, Predictive scaling  | Works with ELB and Elastic Beanstalk  | Automatically scale compute
-AWS Auto Scaling  | Compute auto scaling  | Across multiple AZs | Predictive scaling  | Amazon EC2, Amazon ECS, Amazon DynamoDB, Amazon Aurora  | Automatically scale workloads
+AWS Auto Scaling  | Compute auto scaling  | Across multiple AZs | Predictive scaling  | Amazon EC2, Amazon ECS, DynamoDB, Aurora  | Automatically scale workloads
 Amazon CloudFront | CDN | Origin Shield | Edge locations, Regional edge caches, HTTPS, Field-Level Encryption | Caching static content, Lambda@Edge, AWS WAF, OAI | Live streaming, distribute static and dynamic content
 Application Load Balancer (ALB) | HTTPS load balancing service  | EC2 instance and Docker container failover, health checks | Supports operation across multiple AZs  | Routing based on host name, path, query string parameter, HTTP headers, source IP address, or port number | Server Name Indication (SNI) support for serving multiple domain names, authentication support, WAF
 Network Load Balancer (NLB) | TCP load balancing service  | Workload failover, health checks, TLS end-to-end encryption | Supports operation across multiple AZs  | TCP, UDP, and TCP connections encrypted with TLS  | High performance, EIP support; supports targets outside of AWS
@@ -111,12 +104,12 @@ Avoiding Single Points of Failure
 Possible Single Point of Failure  | Mitigation Plan | Reason
 --  | --  | --
 On-premises DNS | Route 53 DNS  | Anycast DNS services are hosted across all AWS regions and edge locations. Health checks and traffic patterns support workload failover.
-Third-party load balancer | Elastic Load Balancing (ELB) services | ELB load-balancers are deployed per AZ. Elastic IP addresses provide fast failover.
+Third-party load balancer | ELB (ELB) services | ELB load-balancers are deployed per AZ. Elastic IP addresses provide fast failover.
 Web workloads | ELB/Auto Scaling  | Scale workload compute resources automatically up and down to meet demand.
 RDS database servers  | Redundant data nodes (primary/standby/cluster)  | Synchronized replication between primary and multiple standby nodes provides a minimum of three or more copies of data.
 EBS data volumes  | Snapshots and retention schedule  | Automatically copy snapshots across regions for additional redundancy using Lifecycle Manager.
 Authentication problems | Redundant authentication nodes  | Multiple Managed AD domain controllers provide alternate authentication options.
-Data center failure | Multiple availability zones | Each region has multiple AZs providing high-availability and failover design options.
+Data center failure | Multiple AZs | Each region has multiple AZs providing high-availability and failover design options.
 Regional disaster | Multi-region deployment with Route 53 | Route 53 routing policy provides geo-redundancy for workloads hosted across AWS regions.
 
 Planning for High Availability, Fault Tolerance, and Redundancy
@@ -124,7 +117,7 @@ Planning for High Availability, Fault Tolerance, and Redundancy
 
 AWS Service | High Availability | Fault Tolerance | Redundancy  | Multi-Region
 --  | --  | --  | --  | --
-EC2 instance  | Additional EC2 instance | Multiple availability zones | EC2 Auto Scaling  | Route 53 health checks
+EC2 instance  | Additional EC2 instance | Multiple AZs | EC2 Auto Scaling  | Route 53 health checks
 EBS volume  | Cluster design  | Snapshots | AMI | Copy AMI/snapshot
 Load balancer | Multiple AZs  | Elastic IP addresses  | Server farm | Route 53 geoproximity load balancing options
 Containers  | Elastic Container Service (ECS) | Fargate management  | Workload load balancer/Auto Scaling | Regional service not multi-region

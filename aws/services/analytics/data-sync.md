@@ -1,7 +1,7 @@
 AWS DataSync
 ---
 
-- A data transfer service for `moving large amounts of data between on-premises storage and Amazon S3, Amazon EFS, or Amazon FSx` for Windows File Server.
+- A data transfer service for moving `large amounts` of data between on-premises storage and Amazon S3, Amazon EFS, or Amazon FSx` for Windows File Server.
 - can `transfer data between any NFS, SMIB, or Amazon S3-compatible storage`, so you can use it to move data between a variety of different storage solutions.
 - enables you to `sync data from an on-premises NFS storage array into EFS storage`.
 - provides `end-to-end security with encryption and integrity validation` for `in-transit and at-rest` security.

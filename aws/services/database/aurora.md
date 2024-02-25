@@ -1,4 +1,4 @@
-Amazon Aurora
+Aurora
 ---
 
 - is a fully compatible `MySQL or PostgreSQL` managed database as a service (`DBaaS`) solution
@@ -14,7 +14,7 @@ Amazon Aurora
   - If the primary database region fails, failover to the secondary site occurs.
   - Both workload tiers are online; when issues occur with one workload tier, traffic gets redirected automatically.
 
-# Features of Amazon Aurora
+# Features of Aurora
 
 ## Backtracking
 
@@ -98,7 +98,7 @@ Amazon Aurora
 - Aurora `Replicas can also be created in different AWS regions`.
 - The first Aurora Replica created in a different region `acts as the primary Aurora replica DB in the new region`. You can also add Aurora Replicas in different AWS regions that will then share the same storage plane.
 
-# Communicating with Amazon Aurora
+# Communicating with Aurora
 
 ## Cluster Endpoint
 
@@ -107,7 +107,7 @@ Amazon Aurora
 
 ## Reader Endpoint
 
-- `connects to one of the available Aurora Replicas` for the database cluster; if there are multiple Amazon Aurora Replicas, the endpoint `uses load balancing` to support the read requests.
+- `connects to one of the available Aurora Replicas` for the database cluster; if there are multiple Aurora Replicas, the endpoint `uses load balancing` to support the read requests.
 - If your Aurora deployment is small, containing a single primary instance, the reader endpoint services all read requests from the primary database instance.
 
 ## Instance Endpoint
@@ -122,17 +122,17 @@ Amazon Aurora
 - Aurora will `automatically load balance the queries among the available Aurora Replicas`.
 - `Custom endpoints` can also be created to connect to a specific instance endpoint (for example, for diagnostics testing).
 
-# Amazon Aurora Cheat Sheet
+# Aurora Cheat Sheet
 
-- Each Amazon Aurora cluster has a set of compute nodes and a copy of the shared storage volume.
-- The storage volume consists of six storage nodes located across three availability zones.
+- Each Aurora cluster has a set of compute nodes and a copy of the shared storage volume.
+- The storage volume consists of six storage nodes located across three AZs.
 - Each database node in a cluster is also a writer node and can execute read and write statements.
-- A database change carried out by a writer node is written to six storage nodes and three availability zones.
-- Amazon Aurora scales storage up in 10-GB increments.
-- Amazon Aurora can lose two copies of data without affecting database writes.
-- Amazon Aurora can have up to 15 read replicas per region.
-- Amazon Aurora Serverless is an on-demand auto-scaling Aurora deployment.
+- A database change carried out by a writer node is written to six storage nodes and three AZs.
+- Aurora scales storage up in 10-GB increments.
+- Aurora can lose two copies of data without affecting database writes.
+- Aurora can have up to 15 read replicas per region.
+- Aurora Serverless is an on-demand auto-scaling Aurora deployment.
 - Aurora Serverless scales up and down based on the database requirements.
 - Automated backups are stored in S3 storage.
-- Amazon Aurora does not support Local Zones.
+- Aurora does not support Local Zones.
 

@@ -15,7 +15,7 @@ Database Design Choices
 
 ## AWS Database Service Comparison
 
-Database Engine | Amazon RDS  | Amazon Aurora | Amazon Aurora Serverless 1  | Amazon Aurora Serverless 2  | Amazon Redshift | Amazon ElastiCache
+Database Engine | Amazon RDS  | Aurora | Aurora Serverless 1  | Aurora Serverless 2  | Amazon Redshift | Amazon ElastiCache
 --  | --  | --  | --  | --  | --  | --
 Compute | EC2 instances | EC2 instances | Serverless  | Serverless  | Provisioned EC2 -leader and compute nodes, Serverless | EC2 instances
 Replication | Multi-AZ cluster deployment of one primary and two read replicas  | Across three AZs  | Across three AZs  | Across three AZs  | Single AZ deployment, cross-region sharing  | Single AZ, multi-AZ cluster
@@ -34,11 +34,11 @@ Cost management | On-demand, Reserved Instances, Savings Plans, data transfer co
 - PostgreSQL, MySQL, and MariaDB have similar costs for storage, provisioned IOPS, and data transfer costs.
 - AWS RDS costs are specific to the AWS region of deployment.
 - Oracle and Microsoft SQL Server deployments can be double the price due to licensing fees.
-- Amazon Aurora can be deployed using provisioned EC2 instances or serverless compute.
-- Amazon Aurora can be deployed as a multi-region Global Datastore.
+- Aurora can be deployed using provisioned EC2 instances or serverless compute.
+- Aurora can be deployed as a multi-region Global Datastore.
 - AWS RDS instance pricing includes vCPU, RAM, and network speeds per chosen RDS database instances.
 - AWS RDS Reserved instances can save up to 60% in compute costs for 1 to 3 years.
-- Auto-provisioning with a defined Amazon Aurora storage maximum is for unpredictable storage needs.
+- Auto-provisioning with a defined Aurora storage maximum is for unpredictable storage needs.
 - AWS RDS snapshot backups are free and are performed every day.
 - AWS RDS retention periods determine how many automatic backups are kept. The default is 7 days; the maximum is 35 days.
 - AWS RDS Multi-AZ deployments create a standby database instance with a separate replicated database instance.
@@ -52,7 +52,7 @@ Cost management | On-demand, Reserved Instances, Savings Plans, data transfer co
 
 ### Reserved instance pricing
 
-- RDS deployments and provisioned versions of Amazon Aurora where customers choose the compute size can be powered by reserved instances to save money. On-demand and spot instances should not be used for database instances that are always online; on-demand instances may be too expensive for 24/7 operation, and spot instances are not guaranteed to be always available.
+- RDS deployments and provisioned versions of Aurora where customers choose the compute size can be powered by reserved instances to save money. On-demand and spot instances should not be used for database instances that are always online; on-demand instances may be too expensive for 24/7 operation, and spot instances are not guaranteed to be always available.
 
 ### RDS Cluster deployment
 
@@ -61,11 +61,11 @@ Cost management | On-demand, Reserved Instances, Savings Plans, data transfer co
 ![RDS Cluster Deployment Choices](../../images/rds-cluster-deployment-choices.png)
 > Fig: RDS Cluster Deployment Choices
 
-### RDS across multiple availability zones
+### RDS across multiple AZs
 
 - RDS high-availability and failover designs are especially effective for database deployments. In addition, durability can be provided by keeping primary and alternate database instances up to date with synchronous replication. When you deploy RDS solutions, AWS does not charge for replication between database instances located in different AZs (see Figure 14-2); when you deploy custom EC2 instances across multiple AZs with a custom database design, there will be data transfer charges for the replication between the primary and alternate database instances across separate AZs and regions.
 
-### RDS in a single availability zone
+### RDS in a single AZ
 
 - A single AZ does not have any high-availability or failover options because the single database server is on a single subnet. High availability or failover might not be a concern due to prudent planning and backup procedures. Perhaps hourly snapshots and transaction logs are automatically created on a schedule and backed up into multiple S3 buckets hosted in different AWS regions. If your recovery time objective (RTO) allows you to be down for a longer period of time (for example, 6 hours), a single AZ deployment may be more economical than a multi-AZ design.
 
@@ -84,12 +84,12 @@ Cost management | On-demand, Reserved Instances, Savings Plans, data transfer co
 
 - A read replica is a copy of the primary database that is kept up to date with asynchronous (rather than synchronous) replication. Read replicas can be promoted to a standalone RDS instance as part of a manual disaster recovery solution if the primary RDS database fails (see Figure 14-3). MySQL, MariaDB, Oracle, and Microsoft SQL Server read replicas can be promoted and made writable, whereas a PostgreSQL read replica cannot be made writable. Read replicas provide the ability to scale read traffic horizontally and also provide additional durability for the database tier.
 
-### Amazon Aurora Serverless
+### Aurora Serverless
 
 - Deploying Aurora Serverless allows you to pay for only the minimum capacity database resources (LCU and database storage) that you consume. You can choose either of two serverless versions:
-  - Version 1 is for a single-region database deployment of a MySQL- or PostgreSQL-compatible engine. The term capacity unit refers to the amount of compute and memory resources assigned. Read or write capacity units (RCU/WCU) can be set from 1 capacity unit, which selects a minimum capacity of 2 GB of RAM, up to 256 capacity units, which selects 488 GB of RAM. Based on the minimum and maximum capacity unit settings, auto-scale compute capacity read/write rules are defined for the required CPU utilization, the number of connections, and required memory. When the workload for a serverless Amazon Aurora database drops below the maximum defined capacity unit threshold, Amazon Aurora automatically reduces the CPU and RAM resources made available for the database cluster.
-  - Amazon Aurora version 2 can scale from hundreds to thousands of transactions completed in milliseconds both within and across AWS regions. In the background, the auto scaling service uses step scaling to ensure the proper sizing of database resources at any given time.
-  - Serverless deployments of Amazon Aurora v2 can be paused after a defined period of activity (see Figure 14-4). There are no charges for an Amazon Aurora database instance when it is not running, potentially saving a high percentage of your database costs when compared to a provisioned deployment of Amazon Aurora.
+  - Version 1 is for a single-region database deployment of a MySQL- or PostgreSQL-compatible engine. The term capacity unit refers to the amount of compute and memory resources assigned. Read or write capacity units (RCU/WCU) can be set from 1 capacity unit, which selects a minimum capacity of 2 GB of RAM, up to 256 capacity units, which selects 488 GB of RAM. Based on the minimum and maximum capacity unit settings, auto-scale compute capacity read/write rules are defined for the required CPU utilization, the number of connections, and required memory. When the workload for a serverless Aurora database drops below the maximum defined capacity unit threshold, Aurora automatically reduces the CPU and RAM resources made available for the database cluster.
+  - Aurora version 2 can scale from hundreds to thousands of transactions completed in milliseconds both within and across AWS regions. In the background, the auto scaling service uses step scaling to ensure the proper sizing of database resources at any given time.
+  - Serverless deployments of Aurora v2 can be paused after a defined period of activity (see Figure 14-4). There are no charges for an Aurora database instance when it is not running, potentially saving a high percentage of your database costs when compared to a provisioned deployment of Aurora.
 
 # NoSQL Deployments
 
@@ -132,7 +132,7 @@ The most popular NoSQL deployment at AWS is DynamoDB, which supports both docume
 
 ## AWS NoSQL Database Service Comparisons
 
-Database Engine | Amazon DynamoDB | Amazon S3 | Amazon Keyspaces  | Amazon DocumentDB | Amazon Neptune  | Amazon TimeStream
+Database Engine | DynamoDB | Amazon S3 | Amazon Keyspaces  | Amazon DocumentDB | Amazon Neptune  | Amazon TimeStream
 --  | --  | --  | --  | --  | --  | --  
 Compute | Serverless  | Serverless storage array  | Serverless  | EC2 Cluster | On-demand EC2, memory optimized | Serverless
 Datatype  | Transactional Key-Value/Document store supports ACID transactions | Key-Value | Hybrid backup, Database backup, Tape backup (Storage Gateway) | PostgreSQL  | JSON  | Apache TinkerPop; Gremlin; SPARQL—supports ACID transactions  | Store and retrieve trillions of events in real time
@@ -165,7 +165,7 @@ Pricing | Standard table, standard Infrequent access. On-demand capacity (data r
 
 Database migration can be carried out using AWS Database Migration Service (DMS). DMS performs a live migration into AWS with little to no downtime. Databases to be migrated can be hosted on an EC2 or RDS instance or located on premises. The DMS server is an EC2 instance hosted in the AWS cloud running replication/migration software. Source and target connections inform DMS where to extract the source database from, and where to deploy the migrated database (see Table 14-4). Scheduled tasks run on the DMS server and replicate the database from the source to the destination server location. DMS can also create database tables and associated primary keys if these items don’t exist on the target instance.
 
-AWS Database Migration Service charges for the compute resources used by the replication instance during the migration. Ingress data transfer into AWS is free of charge. Migrating from a supported target to Amazon Aurora, Amazon Redshift, Amazon DynamoDB, and Amazon DocumentDB is free for up to six months.
+AWS Database Migration Service charges for the compute resources used by the replication instance during the migration. Ingress data transfer into AWS is free of charge. Migrating from a supported target to Aurora, Amazon Redshift, DynamoDB, and Amazon DocumentDB is free for up to six months.
 
 ## Database Migration Service Source and Destination Migrations
 
@@ -180,7 +180,7 @@ SAP Adaptive Server Enterprise (ASE) versions 12.5, 15, 15.5, 15.7, 16, and late
 IBM Db2 z/OS for Linux, UNIX, and Windows | Aurora MySQL, Aurora PostgreSQL, MySQL, and PostgreSQL
 Microsoft Azure SQL Database  | Microsoft SQL Server versions 2005, 2008, 2008R2, 2012, 2014, 2016, 2017, and 2019 Enterprise, Standard, Workgroup, and Developer editions (Web and Express editions not supported)
 Google Cloud for MySQL  | MySQL versions 5.6, 5.7, and 8.0
-RDS instance databases (Oracle, Microsoft SQL Server, MySQL, PostgreSQL, MariaDB), Amazon Aurora (PostgreSQL/MySQL) | Amazon RDS instance databases.  Amazon Redshift, Amazon DynamoDB, Amazon S3, Amazon OpenSearch Service, Amazon ElastiCache for Redis, Amazon Kinesis Data Streams, Amazon DocumentDB, Amazon Neptune, and Apache Kafka
+RDS instance databases (Oracle, Microsoft SQL Server, MySQL, PostgreSQL, MariaDB), Aurora (PostgreSQL/MySQL) | Amazon RDS instance databases.  Amazon Redshift, DynamoDB, Amazon S3, Amazon OpenSearch Service, Amazon ElastiCache for Redis, Amazon Kinesis Data Streams, Amazon DocumentDB, Amazon Neptune, and Apache Kafka
 Amazon DocumentDB | Amazon DocumentDB
 Amazon Redis, Microsoft SQL, NoSQL  | Amazon Redis
 
@@ -192,7 +192,7 @@ Amazon Redis, Microsoft SQL, NoSQL  | Amazon Redis
   - Oracle
   - SQL Server
   - PostgreSQL DB
-  - Amazon Aurora DB cluster
+  - Aurora DB cluster
   - Amazon Redshift cluster
 - The AWS SCT can convert tables, indexes, and application code to the target database engine.
 - After a schema is converted, it is not immediately applied to the target database.
@@ -204,7 +204,7 @@ Data transfer costs are calculated differently for the various managed database 
 
 ### Data Transfer Costs and RDS
 
-Workloads that use RDS deployments utilize EC2 instances and the EBS volumes. With multi-AZ deployment of primary and secondary database instances, read replicas will not have any charges for data transfer to and from any EC2 and RDS instances located in the same AWS region, availability zone, and virtual private cloud. Data charges apply as follows for data transfers (see Figure 14-8) between instances:
+Workloads that use RDS deployments utilize EC2 instances and the EBS volumes. With multi-AZ deployment of primary and secondary database instances, read replicas will not have any charges for data transfer to and from any EC2 and RDS instances located in the same AWS region, AZ, and virtual private cloud. Data charges apply as follows for data transfers (see Figure 14-8) between instances:
   - EC2 and RDS instances that are located across AZs within the same VPC are charged $0.01 per GB ingress and egress.
   - EC2 and RDS instances that are located across AZs and across different VPCs are charged $0.01 per GB ingress and egress.
   - EC2 and RDS instances that are located across AWS regions are charged on both sides of the data transfer from the EC2 instance to the RDS instance and vice versa at $0.02 per GB ingress and egress.
@@ -222,8 +222,8 @@ Workloads that use DynamoDB and DynamoDB Accelerator (DAX) will not have data tr
   - Any data transfers between DynamoDB and EC2 instances located in the same region
   - Any data transfers between EC2 instances and DAX in the same AZ (see Figure 14-9)
 
-![Amazon Aurora and Data Transfer Costs](../../images/aurora-and-data-transfer-costs.png)
-> Fig: Amazon Aurora and Data Transfer Costs
+![Aurora and Data Transfer Costs](../../images/aurora-and-data-transfer-costs.png)
+> Fig: Aurora and Data Transfer Costs
 
 For DynamoDB global table deployments, as shown in Figure 14-10, the following data transfer charges will apply:
 
@@ -231,12 +231,12 @@ For DynamoDB global table deployments, as shown in Figure 14-10, the following d
 - Global tables for cross-region replication charged at the source region rate of $0.02 per GB egress.
 - Any data transfers between DynamoDB and EC2 instances located in different AWS regions are charged on both sides of the data transfer at $0.02 per GB egress.
 
-![Amazon Aurora and Global Tables](../../images/aurora-and-global-tables.png)
-> Fig: Amazon Aurora and Global Tables
+![Aurora and Global Tables](../../images/aurora-and-global-tables.png)
+> Fig: Aurora and Global Tables
 
 ### Data Transfer Costs with Amazon Redshift
 
-Workloads that use Amazon Redshift can analyze data stores using standard SQL queries and common business intelligence tools. For an ODBC application connecting to Redshift across multiple AWS regions, there are data transfer costs. For communication within the same availability zone and any data transfers to S3 storage in the same AWS region for backup and restore, there are no data charges. For deployments utilizing multiple AWS regions, as shown in Figure 14-11, the following data transfer charges will apply:
+Workloads that use Amazon Redshift can analyze data stores using standard SQL queries and common business intelligence tools. For an ODBC application connecting to Redshift across multiple AWS regions, there are data transfer costs. For communication within the same AZ and any data transfers to S3 storage in the same AWS region for backup and restore, there are no data charges. For deployments utilizing multiple AWS regions, as shown in Figure 14-11, the following data transfer charges will apply:
 
   - EC2 and RDS instances that are located across AZs and across different VPCs are charged $0.01 per GB ingress and egress.
   - EC2 and RDS instances that are located across AWS regions are charged on both sides of the data transfer from the EC2 instance to the RDS instance and vice versa at $0.02 per GB ingress and egress.
@@ -248,13 +248,13 @@ Workloads that use Amazon Redshift can analyze data stores using standard SQL qu
 
 Workloads that use DocumentDB are using a database service with MongoDB compatibility. An application using an EC2 instance using DocumentDB deployed as a global cluster as the data store across two AWS regions with cross-region replication will have data transfer charges (see Figure 14-12). However, read replicas in multiple AZs will have no data transfer charges for communication between any EC2 and DocumentDB instance located in the same AZ, or for data transferred between DocumentDB instances within the same AWS region. There will also be data transfer charges for:
 
-  - EC2 instance and DynamoDB communication across availability zones
+  - EC2 instance and DynamoDB communication across AZs
   - Cross-region replication between the DocumentDB primary and secondary instances
 
 ## Data Transfer Costs Cheat Sheet
 
 - Calculate data transfer charges on both sides of the communication channel. “data transfer in” to a destination is also “data transfer out” from the source.
-- Use regional read replicas and alternate replicas to reduce the amount of cross-availability zone or cross-region traffic.
+- Use regional read replicas and alternate replicas to reduce the amount of cross-AZ or cross-region traffic.
 
 ![DocumentDB Data Transfer Charges](../../images/documentdb-data-transfer-charges.png)
 > Fig: DocumentDB Data Transfer Charges
@@ -277,9 +277,9 @@ RDS retains backup DB instances for a default retention period of 7 days.
 Retention periods can be set to up to 35 days.
 Point-in-time restores can specify any second during your retention period up to the latest restorable time.
 The preferred backup window is the period of time during which your DB instance is backed up.
-Amazon Aurora backs up your cluster volume automatically and retains the restored data for the length of the defined backup retention period.
+Aurora backs up your cluster volume automatically and retains the restored data for the length of the defined backup retention period.
 Amazon Document DB and Amazon Neptune back up your cluster volume continuously and retain the restored data for the length of the defined retention period.
-Amazon DynamoDB enables you to back up your table data continuously by using point-in-time recovery (PITR), backing up your table data automatically with per-second granularity allowing restores to any given second in the preceding 35 days.
+DynamoDB enables you to back up your table data continuously by using point-in-time recovery (PITR), backing up your table data automatically with per-second granularity allowing restores to any given second in the preceding 35 days.
 On-demand backups of DynamoDB can be performed using the DynamoDB service or AWS Backup.
 Amazon DocumentDB (with MongoDB compatibility) continuously backs up your data to S3 storage, allowing restoration to any point within the backup retention period of 1 to 35 days.
 Multi-AZ DB cluster deployments can be backed up with a Multi-AZ DB snapshot.

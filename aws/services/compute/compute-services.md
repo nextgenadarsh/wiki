@@ -19,5 +19,5 @@ Edge and hybrid | AWS Outposts  | Bring native AWS services and infrastructure t
 . | AWS Wavelength Zones  | AWS cloud services and infrastructure hosted in third-party telecommunication data centers for developing and hosting 5G workloads
 Capacity management | AWS Compute Optimizer | Recommend compute resources to improve workload performance and reduce costs
 . | AWS Elastic Beanstalk | Deploy web applications running on instances and containers on AWS infrastructure services
-. | Elastic Load Balancing (ELB)  | Distribute requests to targeted EC2 instances and containers across multiple availability zones
+. | ELB (ELB)  | Distribute requests to targeted EC2 instances and containers across multiple AZs
 . | Amazon EC2 Auto Scaling | Scale workloads (web servers and databases) using dynamic and predictive scaling

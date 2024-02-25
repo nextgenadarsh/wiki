@@ -5,7 +5,7 @@ VPC Endpoints
 - provides `secure access using either a gateway or interface connection` to an S3 bucket from applications running in a VPC without requiring an Internet Gateway or NAT gateway.
 - Access to an S3 bucket using a VPC gateway endpoint connection is `not charged`.
 
-Endpoints enable you to create a private connection between your VPC and another AWS service without the need for an Internet gateway, a NAT gateway, or a VPN connection. VPC endpoints are used to enable communication among resources in your VPC and other AWS services using private IP addresses, which can improve the security and performance of your applications. The majority of endpoint connections are interface VPC endpoints; however, there is a gateway endpoint for accessing Amazon DynamoDB.
+Endpoints enable you to create a private connection between your VPC and another AWS service without the need for an Internet gateway, a NAT gateway, or a VPN connection. VPC endpoints are used to enable communication among resources in your VPC and other AWS services using private IP addresses, which can improve the security and performance of your applications. The majority of endpoint connections are interface VPC endpoints; however, there is a gateway endpoint for accessing DynamoDB.
 
 Endpoint services allow access to most AWS services across the private AWS network, providing security and speed:
 
@@ -15,7 +15,7 @@ Endpoint services allow access to most AWS services across the private AWS netwo
 
 ## VPC endpoints
 
-- VPC interface endpoints use elastic network interfaces (ENIs) provisioned from the selected subnet in your VPC to a supported AWS service such as Amazon Elastic Container Registry (ECR) (see Figure 15-5). Communicating from a VPC directly to an AWS service across the AWS private network does not require an Internet gateway, NAT gateway services, or AWS VPN connections, thereby saving costs. VPC gateway endpoints route traffic to Amazon DynamoDB and Amazon S3 buckets. There are no processing charges when using a VPC gateway endpoint.
+- VPC interface endpoints use elastic network interfaces (ENIs) provisioned from the selected subnet in your VPC to a supported AWS service such as Amazon Elastic Container Registry (ECR) (see Figure 15-5). Communicating from a VPC directly to an AWS service across the AWS private network does not require an Internet gateway, NAT gateway services, or AWS VPN connections, thereby saving costs. VPC gateway endpoints route traffic to DynamoDB and Amazon S3 buckets. There are no processing charges when using a VPC gateway endpoint.
 
 ![Accessing Elastic Container Registry Using an Interface Endpoint](../../images/accessing-ecr-using-interface-endpoint.png)
 > Fig: Accessing Elastic Container Registry Using an Interface Endpoint
@@ -44,7 +44,7 @@ _ | $4,671.00 | $1,083.00 | $45.00
 
 ## VPC sharing
 
-- The owner of a VPC can share a subnet and the resource hosted on the subnet to be shared, such as a database, with other participant AWS accounts. VPC sharing does not require VPC peering. There are no data transfer charges when sharing subnet resources between AWS accounts within the same availability zone. VPC sharing is enabled using AWS Resource Access Manager.
+- The owner of a VPC can share a subnet and the resource hosted on the subnet to be shared, such as a database, with other participant AWS accounts. VPC sharing does not require VPC peering. There are no data transfer charges when sharing subnet resources between AWS accounts within the same AZ. VPC sharing is enabled using AWS Resource Access Manager.
 
 # Network Services from On-Premises Locations
 
@@ -69,7 +69,7 @@ Workloads hosted at AWS requiring access to on-premises data centers will incur 
 
 # Data Transfer Costs
 
-To reduce networking costs, you need to look at network traffic flows—both egress and ingress. Data transfer costs are charges for egress (outgoing) network traffic across the AWS cloud, and when exiting the AWS cloud. AWS charges you for outbound network traffic to the Internet, across availability zones or regions, or across a peered network connection. Regional data transfer costs that include networking are NAT gateway services, VPN connections, and ELB deployments. There are no data transfer costs within a single AZ. There are data transfer costs when a workload spans multiple AZs.
+To reduce networking costs, you need to look at network traffic flows—both egress and ingress. Data transfer costs are charges for egress (outgoing) network traffic across the AWS cloud, and when exiting the AWS cloud. AWS charges you for outbound network traffic to the Internet, across AZs or regions, or across a peered network connection. Regional data transfer costs that include networking are NAT gateway services, VPN connections, and ELB deployments. There are no data transfer costs within a single AZ. There are data transfer costs when a workload spans multiple AZs.
 
 Your first monthly AWS bill will contain a few data transfer charge surprises. Data transfer costs are generally higher for data transfer between AWS regions than for intra-region data transfer between AZs within the same region.
 
@@ -100,7 +100,7 @@ If a NAT gateway is used to access the same AWS services from a private subnet, 
 
 # Workload Components in the Same Region
 
-Data transfer between EC2 instances or containers or with ENIs in the same AZ and VPC using private IPv4 or IPv6 addresses is free. Data transfer between EC2 instances or containers and Amazon S3 storage in the same AZ from the same VPC is also free. For a custom workload design that uses multiple AZs, there will be service-specific pricing for data transfers for cross-AZ communication between the EC2 instances; however, for Amazon RDS designs deployed across multiple AZs and Amazon Aurora, replication of data records across multiple AZs is free. Data transfer charges will be charged for all ingress traffic on both sides of a peering connection that crosses AZs
+Data transfer between EC2 instances or containers or with ENIs in the same AZ and VPC using private IPv4 or IPv6 addresses is free. Data transfer between EC2 instances or containers and Amazon S3 storage in the same AZ from the same VPC is also free. For a custom workload design that uses multiple AZs, there will be service-specific pricing for data transfers for cross-AZ communication between the EC2 instances; however, for Amazon RDS designs deployed across multiple AZs and Aurora, replication of data records across multiple AZs is free. Data transfer charges will be charged for all ingress traffic on both sides of a peering connection that crosses AZs
 
 ![Workload Communications Across Availability Zones](../../images/workload-communications-across-availability%20Zones.png)
 > Fig: Workload Communications Across Availability Zones
@@ -150,7 +150,7 @@ The design of your workload and its use of AWS network services will greatly det
 - When data is transferred between AWS services hosted in different AWS regions, the data transfer charge is $0.02 per GiB.
 Data is transferred within the same AWS region and staying within the same AZ is free of charge when using private IP addresses.
 If you are using an AWS-assigned public IP address or an assigned elastic IP public address, there are charges for data transfer out from the EC2 instance. These charges are per GiB transfer, and the minimum charge is $0.01 per GiB.
-- Data transfers between EC2 instances, AWS services, or containers using elastic network interfaces in the same availability zone and same VPC using private IPv4 or IPv6 addresses are free of charge. A common example is RDS synchronous database replication from the primary database node to the standby database node. Across AZs, there are data transfer charges for RDS synchronous replication.
+- Data transfers between EC2 instances, AWS services, or containers using elastic network interfaces in the same AZ and same VPC using private IPv4 or IPv6 addresses are free of charge. A common example is RDS synchronous database replication from the primary database node to the standby database node. Across AZs, there are data transfer charges for RDS synchronous replication.
 - Always use private IP addresses rather than public IP addresses, sending data with public IP addresses is charged.
 - Different AWS regions have different egress data transfer costs. If possible, architect your applications and systems for minimal data transfer across AWS regions or AZs.
 
@@ -181,7 +181,7 @@ Use AWS CloudFront for caching content and reducing the load on the origin serve
 Avoid using public IPv4 addresses or EIP addresses as costs are higher than private IPv4 addresses.
 RDS Multi-AZ deployments include the data transfer costs for replication between primary and alternate database servers.
 Amazon EFS deployments have both single-AZ or Multi-AZ deployment options. A single-AZ deployment can save up to 40% in storage costs.
-VPC gateway endpoints have no data transfer charges when communicating with Amazon S3 and Amazon DynamoDB within the same region.
+VPC gateway endpoints have no data transfer charges when communicating with Amazon S3 and DynamoDB within the same region.
 VPC interface endpoints are charged hourly service and data transfer charges.
 Amazon EFS and Amazon RDS deployments have free cross-AZ data transfers.
 Amazon CloudFront has free data transfers for GET requests.

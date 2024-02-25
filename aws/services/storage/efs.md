@@ -5,8 +5,8 @@ Amazon Elastic File System (EFS)
 - removes the need to provision and attach EBS volumes for data storage, and `operates as a shared storage` service that allows you to `concurrently serve EC2 instances hosted on subnets` within select VPCs by using `NFS mount points`.
 - The key features of EFS include the following:
   - Availability and durability
-    - Choose `Regional to store data redundantly across multiple availability zones`.
-    - Choose `One Zone to store data redundantly within a single availability zone`.
+    - Choose `Regional to store data redundantly across multiple AZs`.
+    - Choose `One Zone to store data redundantly within a single AZ`.
   - No networking or file layer to manage
     - There are no EBS drives to provision, manage, and pay for.
     - `Pay for the storage used` and the level of performance.
@@ -74,7 +74,7 @@ Amazon Elastic File System (EFS)
 
 ## One-Zone Infrequent Access
 
-- is similar to the Infrequent Access storage class with the added benefit of being stored in a `single availability zone`.
+- is similar to the Infrequent Access storage class with the added benefit of being stored in a `single AZ`.
 - This can be useful for data that is `not defined as critical`.
 - provides a `lower storage cost` than Standard storage and Infrequent Access but has `higher access fees`.
 

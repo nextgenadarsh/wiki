@@ -22,7 +22,7 @@ For example, a single general-purpose SSD sized at 16,384 GiB hosted in the US-E
 
 # Snapshot storage: Snapshot storage costs can be extremely high if snapshots that are no longer required are not deleted. Amazon Data Lifecycle Manager, which is found in the EBS section of the EC2 console, allows you to schedule and manage the creation and deletion of EBS snapshots.
 
-# Shared storage (EFS/FSx for Windows File Server): Amazon EFS and Amazon FSx for Windows File Server are shared file storage services. At a minimum, you pay for the total amount of storage used per month. EFS Infrequent Access storage is priced based on the amount of storage used and the amount of data accessed. You can also optionally pay for faster-provisioned throughput in megabytes per month, depending on your performance requirements. FSx for Windows File Server usage is prorated by the hour, and customers are billed for the average usage each month, paying for the storage and throughput capacity specified and for any backups performed. FSx for Windows File Server customers pay for data transferred across availability zones or peering connections in the same region and for data transferred out to other AWS regions.
+# Shared storage (EFS/FSx for Windows File Server): Amazon EFS and Amazon FSx for Windows File Server are shared file storage services. At a minimum, you pay for the total amount of storage used per month. EFS Infrequent Access storage is priced based on the amount of storage used and the amount of data accessed. You can also optionally pay for faster-provisioned throughput in megabytes per month, depending on your performance requirements. FSx for Windows File Server usage is prorated by the hour, and customers are billed for the average usage each month, paying for the storage and throughput capacity specified and for any backups performed. FSx for Windows File Server customers pay for data transferred across AZs or peering connections in the same region and for data transferred out to other AWS regions.
 As an example for EFS, suppose a file system hosted in the US-East-1 (Northern Virginia) region uses 300 GiB of storage for 20 days for a single month. The charges would be as follows: total usage (GiB-hours) = 300 GiB × 20 days × (24 hours/day) = 144,000 GiB-hours. The total charge equates to $43.20 per GiB-month. Moving your files to the EFS Infrequent Access storage tier would reduce your EFS storage costs by up to 92%.
 
 # Amazon S3, EBS, EFS, and FSx for Windows File Server Comparison
@@ -50,8 +50,8 @@ The following AWS services can be backed up with AWS Backup:
 
 EBS volumes
 EC2 instances and Windows applications (including Windows Server, Microsoft SQL Server, and Microsoft Exchange Server)
-Amazon RDS databases (including Amazon Aurora clusters)
-Amazon DynamoDB tables
+Amazon RDS databases (including Aurora clusters)
+DynamoDB tables
 Amazon Elastic File System file systems
 Amazon FSx for Windows File Server file systems
 Amazon FSx for Lustre, ONTAP, and OpenZFS file systems
@@ -89,7 +89,7 @@ AWS Backup Vault Lock enforces a write-once, read-many (WORM) setting for all ba
 AWS Backup Audit Manager audits the compliance of your AWS Backup policies.
 Amazon S3 backups require versioning to be enabled.
 AWS Backup charges by the GiB-month depending on the amount of resource type stored and restored per month.
-The AWS Backup lifecycle feature automatically transitions your recovery points from a warm storage tier to a lower-cost cold storage tier for backups of Amazon EFS file systems, Amazon DynamoDB tables, and VMware virtual machines.
+The AWS Backup lifecycle feature automatically transitions your recovery points from a warm storage tier to a lower-cost cold storage tier for backups of Amazon EFS file systems, DynamoDB tables, and VMware virtual machines.
 Individual files can also be restored without having to restore the entire file system.
 
 # Data Transfer Costs
@@ -98,8 +98,8 @@ There is no charge for inbound data transfer into AWS from the Internet, from an
 
 - When data is transferred to the Internet from an AWS service, data transfer charges apply based on the service and the AWS region where the service is located.
 - Data transfers across the Internet are billed at AWS region-specific and tiered data transfer rates.
-Data transferred into and out from Amazon EC2, Amazon RDS, Amazon Redshift, Amazon DynamoDB, Amazon ElastiCache instances, an Elastic Network Adapter, or VPC peering connections across availability zones in the same AWS region is charged at $0.01/GiB in each direction.
-Data transferred across regional endpoints between Amazon S3, Amazon S3 Glacier, Amazon DynamoDB, Amazon Simple Queue Service (SQS), Amazon Kinesis, Amazon Elastic Container Registry (ECR), Amazon SNS, and Amazon EC2 instances in the same AWS region is free of charge. However, if data is transferred across a PrivateLink connection, VPC endpoint, AWS NAT Gateway Service, or AWS Transit Gateway, data transfer charges will apply.
+Data transferred into and out from Amazon EC2, Amazon RDS, Amazon Redshift, DynamoDB, Amazon ElastiCache instances, an Elastic Network Adapter, or VPC peering connections across AZs in the same AWS region is charged at $0.01/GiB in each direction.
+Data transferred across regional endpoints between Amazon S3, Amazon S3 Glacier, DynamoDB, Amazon Simple Queue Service (SQS), Amazon Kinesis, Amazon Elastic Container Registry (ECR), Amazon SNS, and Amazon EC2 instances in the same AWS region is free of charge. However, if data is transferred across a PrivateLink connection, VPC endpoint, AWS NAT Gateway Service, or AWS Transit Gateway, data transfer charges will apply.
 
 ## What Type of Data Do You Need to Transfer from On Premises to AWS?
 

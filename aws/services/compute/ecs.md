@@ -1,7 +1,7 @@
 Amazon Elastic Container Service (ECS)
 ---
 
-- is a `fully managed container orchestration service` that makes it `easy to deploy, run, and scale` containerized applications on AWS running Docker containers running on a `managed cluster across multiple availability zones (AZs)` within an AWS region.
+- is a `fully managed container orchestration service` that makes it `easy to deploy, run, and scale` containerized applications on AWS running Docker containers running on a `managed cluster across multiple AZs (AZs)` within an AWS region.
 - supports both `rolling updates` and `blue/green` deployments using AWS `CodeDeploy`.
 
 # Features

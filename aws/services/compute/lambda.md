@@ -5,7 +5,7 @@ AWS Lambda
 - provides compute processing power `on demand`, executing functions.
 - You can create functions without the need to provision or maintain any infrastructure.
 - `charges` you only for the `time your code executes`.
-- can be triggered by a wide range of events, such as object changes in an Amazon S3 bucket or an Amazon DynamoDB table, or from an HTTP request to an Amazon API Gateway endpoint.
+- can be triggered by a wide range of events, such as object changes in an Amazon S3 bucket or an DynamoDB table, or from an HTTP request to an Amazon API Gateway endpoint.
 - can communicate with other AWS services.
 - is compatible with code written in a `variety of programming languages`, including Node.js, Java, Python, and C#.
 - supports two types of `deployment packages`

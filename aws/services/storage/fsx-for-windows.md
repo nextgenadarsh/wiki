@@ -10,7 +10,7 @@ Amazon FSx for Windows File Server
 
 ## Single-AZ deployment
 
-- FSx `automatically replicates data within the selected availability zone`.
+- FSx `automatically replicates data within the selected AZ`.
 - FSx uses the Windows Volume Shadow Copy Service to create daily backups stored in Amazon S3.
 - Multi-AZ deployment
 - Each AZ has a dedicated file server.

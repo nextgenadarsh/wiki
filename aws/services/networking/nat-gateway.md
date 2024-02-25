@@ -13,7 +13,7 @@ There are several use cases to consider when deploying NAT services at AWS:
 
 # NAT gateway instance high availability
 
-- For high-availability deployments, multiple NAT gateway instances can be deployed per availability zone (see Figure 15-2), but costs will be higher. The NAT gateway service can scale throughput up to 50 GiBps. Multiple NAT gateway service deployments per AZ provide high availability.
+- For high-availability deployments, multiple NAT gateway instances can be deployed per AZ (see Figure 15-2), but costs will be higher. The NAT gateway service can scale throughput up to 50 GiBps. Multiple NAT gateway service deployments per AZ provide high availability.
 
 ![NAT Gateway Service HA Deployment](../../images/nat-gateway-service-ha-deployment.png)
 > Fig: NAT Gateway Service HA Deployment
@@ -23,6 +23,6 @@ Costs can be reduced for NAT services by doing the following:
 - Enable NAT gateway instances during defined maintenance windows for required updates.
 - Create NAT gateways in the same AZ as the instances requiring Internet access to reduce cross-AZ data transfer charges.
 - If most traffic through the NAT service is to AWS services that support VPC interface endpoints, create an Interface endpoint for each service.
-- If the majority of NAT service charges are to Amazon S3 or Amazon DynamoDB, set up gateway VPC endpoints. There are no charges for using a gateway VPC endpoint.
+- If the majority of NAT service charges are to Amazon S3 or DynamoDB, set up gateway VPC endpoints. There are no charges for using a gateway VPC endpoint.
 
 

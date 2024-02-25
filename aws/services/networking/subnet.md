@@ -1,7 +1,7 @@
 Subnet
 ---
 
-- is a `range of IPv4 or IPv6 addresses within a VPC` that is `associated with a specific availability zone`.
+- is a `range of IPv4 or IPv6 addresses within a VPC` that is `associated with a specific AZ`.
 - When you create a subnet, `you specify the CIDR block for the subnet`, which determines the range of IPv4 and IPv6 addresses that are available for use in the subnet.
 - You can create `multiple subnets within a VPC`, and `each subnet can span one or more AZs`. You can also specify a different CIDR block for each subnet.
 - Each subnet that you create resides within its assigned AZ
@@ -40,7 +40,7 @@ There are several benefits to creating subnets within a VPC:
 - Public subnets have access to the Internet.
 - Public subnets are for hosting infrastructure resources such as load balancers or NAT services.
 - Private subnets are private, with no direct Internet access, although NAT services can provide indirect Internet access.
-- A subnet cannot span multiple availability zones.
+- A subnet cannot span multiple AZs.
 - If a subnet’s traffic is routed to an Internet gateway, the subnet is a public subnet because there is a defined path to the Internet.
 - If a subnet does not have a route to the Internet gateway, the subnet is a private subnet with no external destination defined.
 - If a subnet has a route table entry that routes traffic to a virtual private gateway, the subnet is known as a VPN-only subnet, and it can be connected by using an external VPN connection.

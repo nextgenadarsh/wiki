@@ -1,8 +1,8 @@
-Amazon DynamoDB
+DynamoDB
 ---
 
 - provides high availability and horizontal scaling of `regional tables` that can also be `synchronized across multiple regions`.
-- is a `fully managed NoSQL database` service providing fast and predictable performance with `horizontal scalability across availability zones and regions`.
+- is a `fully managed NoSQL database` service providing fast and predictable performance with `horizontal scalability across AZs and regions`.
 - DynamoDB tables can be created for storing and retrieving any amount of data with a `very high number of requests`.
 
 # Features of DynamoDB

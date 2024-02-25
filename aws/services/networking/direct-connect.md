@@ -24,7 +24,7 @@ AWS Direct Connect
 - You can configure an AWS Direct Connect connection with one or more virtual interfaces (VIFs).
 - `Public VIFs` allow access to services such as Amazon `S3` buckets and Amazon `DynamoDB` tables.
 - `Private VIFs` allow access only to `VPCs`.
-- An AWS `Direct Connect` connection allows connections to `all availability zones within the region` where the connection has been established.
+- An AWS `Direct Connect` connection allows connections to `all AZs within the region` where the connection has been established.
 - You are charged for AWS Direct Connect connections based on data transfer and port hours used.
 - AWS Direct Connect dedicated connections are available at 1 Gbps up to 100 Gbps speeds.
 - You can order speeds of 50 Mbps up to 200 Mbps through a hosted connection through AWS Direct Connect partners.

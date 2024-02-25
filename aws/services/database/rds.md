@@ -1,7 +1,7 @@
 Amazon Relational Database Service (RDS)
 ---
 
-- RDS recommends `Multi-AZ deployments`, which automatically `create one or more secondary copies` of the database in `multiple availability zones`, providing additional protection against outages and data loss.
+- RDS recommends `Multi-AZ deployments`, which automatically `create one or more secondary copies` of the database in `multiple AZs`, providing additional protection against outages and data loss.
 - is a managed database service which hosts a variety of popular relational database engines.
 - Monitoring, backup, and failover of your database instances are managed by AWS.
 - To maintain complete control, you can build your own EC2 database instances and manage every aspect of your database infrastructure as a self-managed infrastructure as a service (IaaS) deployment by deploying RDS Custom.
@@ -82,7 +82,7 @@ License model | Bring your own license (BYOL) or general-purpose license include
 Database engine version | Select desired version to deploy
 Database instance | Standard, memory-optimized, or burstable performance
 Multi-AZ deployment | Synchronous AWS replication service; Native Mirroring or Always On for SQL Server
-Multi-AZ DB cluster | DB cluster with a primary DB instance and two readable standby DB instances in different availability zones.
+Multi-AZ DB cluster | DB cluster with a primary DB instance and two readable standby DB instances in different AZs.
 Storage type  | SSD, provisioned IOPS, or HDD volumes
 Amount of storage to allocate | 1–64 TB (based on EBS volume types chosen)
 Database instance identifier  | Unique identifier, if required by database engine
