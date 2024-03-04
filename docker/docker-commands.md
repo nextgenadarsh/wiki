@@ -1,5 +1,16 @@
 # Docker CheatSheet
 
+## General Management
+
+| Command                                               | Purpose
+| --                                                    | --
+| `docker login`                                        | log in to a Docker registry
+| `docker logout`                                       | log out of a Docker registry
+| `docker inspect <object>`                             | list low-level information on Docker objects
+| `docker version`                                      | show the version of the local Docker installation
+| `docker info`                                         | display information about the system
+| `docker system prune`                                 | remove unused images, containers, and networks
+
 ## Container Management
 
 | Command                                   | Purpose
@@ -75,17 +86,6 @@
 | `docker network inspect <network>`                    | show information on one or more networks
 | `docker network connect <network> <container>`        | connect a container to a network
 | `docker network disconnect <network> <container>`     | disconnect a container from a network
-
-## General Management
-
-| Command                                               | Purpose
-| --                                                    | --
-| `docker login`                                        | log in to a Docker registry
-| `docker logout`                                       | log out of a Docker registry
-| `docker inspect <object>`                             | list low-level information on Docker objects
-| `docker version`                                      | show the version of the local Docker installation
-| `docker info`                                         | display information about the system
-| `docker system prune`                                 | remove unused images, containers, and networks
 
 ## Plugin Management
 
