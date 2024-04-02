@@ -1,0 +1,22 @@
+# This job computes π to 2000 places and prints it out. It takes around 10s to complete.
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: log-job
+spec:
+  completions: 5
+  parallelism: 2
+  completionMode: Indexed  # required for the feature
+  backoffLimitPerIndex: 1  # maximal number of failures per index
+  maxFailedIndexes: 3      # maximal number of failed indexes before terminating the Job execution
+  template:
+    spec:
+      containers:
+      - name: log-job
+        image: perl:5.34.0
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
+
+# 

@@ -110,14 +110,29 @@ Service Account   | sa
 ## Node
 
 - Get node description: `kubectl describe node <node-name>`
+- Add Taint: `kubectl taint nodes my-node server=true:NoSchedule`
+- Add Taint: `kubectl taint nodes my-node server=true:NoSchedule-`
+- Get Taints: `kubectl describe nodes | grep -i taint`
 
 ## Pod
 
-- Example Commands:
-  - `kubectl get pods --field-selector status.phase=Running`
-  - `kubectl run nginx-app --image=nginx --restart=Never --port=5700 --labels="app=demo,env=test"`
-  - `kubectl exec -it nginx -- /bin/bash`
-  - `kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > nginx-pod.yaml`
+- `kubectl get pods --field-selector status.phase=Running`
+- `kubectl run nginx-app --image=nginx --restart=Never --port=5700 --labels="app=demo,env=test"`
+- `kubectl exec -it nginx -- /bin/bash`
+- `kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml > nginx-pod.yaml`
+- Toleration:
+  ```yaml
+  spec:
+    containers:
+    - name: nginx
+      image: nginx
+      imagePullPolicy: IfNotPresent
+    tolerations:
+    - key: "taint-key"
+      operator: "Equal"
+      value: "taint-value"
+      effect: "NoSchedule"
+  ```
 
 ## Job
 
@@ -183,6 +198,10 @@ Service Account   | sa
 - Get pod's all containers' logs: `kubectl logs nginx-app --all-containers=true`
 - Get deployment's logs: `kubectl logs deployment.apps/my-deploy`
 - Get logs of 1st container of a job: `kubectl logs job my-job`
+- Get logs:
+  - `kubectl logs nginx-app --all-containers=true`
+- Get logs from pods defined by label app=nginx
+  - `kubectl logs -f -l app=nginx --all-containers=true`
 
 ## Metrics
 
