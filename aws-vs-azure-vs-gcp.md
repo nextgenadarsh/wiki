@@ -25,3 +25,4 @@
 | Mgmt Services & Options   | Amazon Cloudformation         | Azure Resource Manager    | Cloud Deployment Manager
 | Notifications             | Amazon SNS                    | Azure Notification Hub    | None
 | Load Balancing            | Elastic Load Balancing        | Load Balancing for Azure  | Cloud Load Balancing
+
