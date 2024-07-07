@@ -1,30 +1,15 @@
-﻿public class User {
-    public required string Name { get; set; }
-    public required int Age { get; set; }
-
-    public User() { }
-
-    [System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
-    public User(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
-}
-
+﻿
 public class Program
 {
+    public delegate void DisplayMessage(string message);
     private static void Main(string[] args)
     {
-        var (op1, op2, op) = (12, 5, "*");
-        var value = op switch {
-            _ when op == "+" => op1 + op2,
-            _ when op == "-" => op1 - op2,
-            _ when op == "*" => op1 * op2,
-            _ => 0
+        DisplayMessage display = delegate(string message)
+        {
+            Console.WriteLine(message);
         };
 
-        Console.WriteLine($"Operation Value: {value}");
+        display("Hello, delegate with Anonymous method!");    
     }
 }
 

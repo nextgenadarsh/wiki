@@ -1,6 +1,8 @@
 .vscode
 
+# C# files/folders to ignore
 bin
 debug
 
+# VS Code files/folders to ignore
 .DS_Store
