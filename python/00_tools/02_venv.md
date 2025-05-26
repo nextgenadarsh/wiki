@@ -1,4 +1,4 @@
-venv
+venv (https://pypi.org/project/virtualenv/)
 ---
 
 - venv (for Python 3) allows you to `manage separate package installations for different projects`.

@@ -27,8 +27,14 @@ pipenv
 
 ## Getting started
 
+> For Visual Studio Code, if your import statements are showing warning then you need to select the interpreter for VS Code
+
+- Check existing venv: `pipenv --venv`
+- Reactivate existing environment `source $(pipenv --venv)/bin/activate`
+
 - Install pipenv `pip install --user pipenv`
 - Create a new project using Python 3.7, specifically: `pipenv --python 3.7`
+- Activate virtualenv: `pipenv shell`
 - Remove project virtualenv (inferred from current directory): `pipenv --rm`
 - Install all dependencies for a project (including dev): `pipenv install --dev`
 - Create a lockfile containing pre-releases: `pipenv lock --pre`
@@ -41,7 +47,7 @@ pipenv
 - Locate the project: `pipenv --where`
 - Locate the virtualenv: `pipenv --venv`
 - Locate python interpreter: `pipenv --py`
-- Activate virtualenv: `pipenv shell`
+
 - Install packages: `pipenv install`
 
 
