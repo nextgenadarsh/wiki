@@ -1,3 +1,0 @@
-System Design Interview Questions
----
-
